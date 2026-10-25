@@ -1,0 +1,62 @@
+abstract class Animal {
+  String name;
+  int age;
+
+  Animal(this.name, this.age);
+
+  void makeSound();
+
+  void displayInfo() {
+    print('Name: $name');
+    print('Age: $age');
+  }
+}
+
+mixin PetCare {
+  void feed() {
+    print('The animal is being fed.');
+  }
+}
+
+class Dog extends Animal with PetCare {
+  Dog(String name, int age) : super(name, age);
+
+  @override
+  void makeSound() {
+    print('$name says: Arff! Arff!');
+  }
+}
+
+class Cat extends Animal with PetCare {
+  Cat(String name, int age) : super(name, age);
+
+  @override
+  void makeSound() {
+    print('$name says: Ngi! Ngi!');
+  }
+}
+
+void main() {
+  Dog dog = Dog('Rafael Ebrada', 20);
+  Cat cat = Cat('Jaypee Ramos', 22);
+
+  print(' PEEJAY PETS MANAGEMENT SYSTEM ');
+
+  print('\n DOG INFORMATION ');
+  dog.displayInfo();
+  dog.makeSound();
+  dog.feed();
+
+  print('\n CAT INFORMATION ');
+  cat.displayInfo();
+  cat.makeSound();
+  cat.feed();
+
+  print('\n POLYMORPHISM ');
+
+  List<Animal> animals = [dog, cat];
+
+  for (Animal animal in animals) {
+    animal.makeSound();
+  }
+}
